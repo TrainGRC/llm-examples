@@ -40,6 +40,7 @@ def num_tokens_from_messages(messages):
     return num_tokens
 
 def openai_chat_completion(messages):
+    """Returns the response from the OpenAI API given an array of messages."""
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
