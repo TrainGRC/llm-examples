@@ -67,4 +67,4 @@ while True:
 
     response_content = openai_chat_completion(conversation_history)
     conversation_history.append({"role": "assistant", "content": response_content})
-    print(f"\nAssistant: {response_content}")
+    print(f"\nResponse: \n{response_content}")
