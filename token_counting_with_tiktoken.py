@@ -28,7 +28,7 @@ except ImportError:
 
 print("")
 openai.api_key = input("Please enter your OpenAI API key: ")
-MAX_TOKENS = 3200
+MAX_TOKENS = 512
 
 def num_tokens_from_messages(messages):
     """Returns the number of tokens used by a list of messages."""
@@ -40,7 +40,7 @@ def num_tokens_from_messages(messages):
     return num_tokens
 
 def openai_chat_completion(messages):
-    """Returns the response from the OpenAI API given an array of messages."""
+    """Returns the response from the OpenAI API given a list of messages."""
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=messages,
