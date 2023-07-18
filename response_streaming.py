@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 import subprocess
 import sys
+import time
 
 def install(package):
     subprocess.check_call([sys.executable, "-m", "pip", "install", package])
@@ -57,14 +58,6 @@ def openai_chat_completion(messages, max_retries=3):
                         print(colored(chunk_content, 'green'), end='', flush=True)  # Print each chunk to console as it comes in
                         full_response_content += chunk_content  # Store each chunk in a string
             return full_response_content  # Return the full response content at the end
-
-        except openai.error.APIConnectionError as e:
-            if retries == max_retries:
-                raise e
-            print("Please wait...")
-            time.sleep(backoff_time)
-            retries += 1
-            backoff_time *= 2
         except openai.error as e:
             raise e
 
